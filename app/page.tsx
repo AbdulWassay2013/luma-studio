@@ -7,6 +7,7 @@ import { PricingSection } from "@/components/PricingSection";
 
 
 export default function Home() {
+  fetch("/api/upload")
   return (
   <main className="min-h-screen bg-background p-3 sm:p-4 lg:p-5">
     <HomeHeroSection />
