@@ -21,8 +21,8 @@ export const stylePresets: StylePreset[] = [
         slug: "anime-cel",
         label: "Anime Cel",
         description: "Clean cel shading with expressive color and crisp outlines.",
-        thumbnailPath: "/anime-cel-example.png",
-        thumbnailAlt: "Anime cel preset example",
+        thumbnailPath: "/anime-cel-example (1).png",
+        thumbnailAlt: "Anime cel ",
         prompt:
             "Restyle the uploaded image as high-end anime cel art. Preserve the exact subject, pose, composition, outfit details, and background structure. Use clean linework, elegant cel shading, expressive color contrast, and polished studio-animation clarity.",
     },

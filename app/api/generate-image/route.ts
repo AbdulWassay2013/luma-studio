@@ -214,7 +214,13 @@ export async function POST(request: Request) {
             savedGeneration,
         });
     } catch (error) {
-        console.error("generate-image route failed", error);
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        console.error("generate-image route failed:", errorMessage, error);
+
+        Sentry.logger.error("generation.failed", {
+            error: errorMessage,
+            stack: error instanceof Error ? error.stack : undefined,
+        });
 
         if (APICallError.isInstance(error)) {
             return NextResponse.json(
@@ -228,7 +234,10 @@ export async function POST(request: Request) {
         }
 
         return NextResponse.json(
-            { error: "Image generation failed. Please try again." },
+            {
+                error: "Image generation failed. Please try again.",
+                details: process.env.NODE_ENV === "development" ? errorMessage : undefined,
+            },
             { status: 500 },
         );
     }
